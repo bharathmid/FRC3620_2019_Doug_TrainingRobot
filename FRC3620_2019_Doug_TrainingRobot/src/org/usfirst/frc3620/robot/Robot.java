@@ -9,7 +9,7 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3620.FRC3620_2019_Doug_TrainingRobot;
+package org.usfirst.frc3620.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -18,11 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.slf4j.Logger;
-import org.usfirst.frc3620.FRC3620_2019_Doug_TrainingRobot.commands.*;
-import org.usfirst.frc3620.FRC3620_2019_Doug_TrainingRobot.subsystems.*;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
 import org.usfirst.frc3620.misc.RobotMode;
+import org.usfirst.frc3620.robot.commands.*;
+import org.usfirst.frc3620.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the

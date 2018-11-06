@@ -9,13 +9,13 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3620.FRC3620_2019_Doug_TrainingRobot;
+package org.usfirst.frc3620.robot;
 
-import org.usfirst.frc3620.FRC3620_2019_Doug_TrainingRobot.commands.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.*;
 import org.usfirst.frc3620.misc.XBoxConstants;
+import org.usfirst.frc3620.robot.commands.*;
 
 
 /**
