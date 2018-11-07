@@ -76,7 +76,9 @@ public class OI {
         // ********************************* ok to add here!!!!
         
         joystickButtonA = new JoystickButton(joystick0, XBoxConstants.BUTTON_A);
-        joystickButtonA.whileHeld(new ButtonACommand());
+        //joystickButtonA.whileHeld(new ButtonACommand());
+        joystickButtonA.toggleWhenPressed(new ButtonACommand());
+
 
         SmartDashboard.putData("ButtonACommand", new ButtonACommand());
 

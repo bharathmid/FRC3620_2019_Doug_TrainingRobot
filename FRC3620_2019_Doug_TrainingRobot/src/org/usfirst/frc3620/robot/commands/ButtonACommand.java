@@ -10,18 +10,26 @@
 
 
 package org.usfirst.frc3620.robot.commands;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
 import org.usfirst.frc3620.robot.Robot;
+import org.usfirst.frc3620.robot.RobotMap;
 
 /**
  *
  */
 public class ButtonACommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
+	
+	SpeedController mySpeedController = RobotMap.laserCannonSubsystemSpeedController2;
+	DigitalInput myDigitalInput = RobotMap.laserCannonSubsystemDigitalInput0;
+	AnalogInput myAnalogInput = RobotMap.laserCannonSubsystemAnalogInput0;
 	
     public ButtonACommand() {
 
@@ -36,18 +44,25 @@ public class ButtonACommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	double v = myAnalogInput.getVoltage();
+    	mySpeedController.set(v/5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-        return false;
+    	if(myDigitalInput.get()) {
+    		// we were true
+    		return false;
+    	}
+        return true;
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
     	EventLogging.commandMessage(logger);
+    	mySpeedController.set(0);
     }
 
     // Called when another command which requires one or more of the same
@@ -55,5 +70,6 @@ public class ButtonACommand extends Command {
     @Override
     protected void interrupted() {
     	EventLogging.commandMessage(logger);
+    	mySpeedController.set(0);
     }
 }
