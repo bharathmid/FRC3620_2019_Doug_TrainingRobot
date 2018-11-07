@@ -12,8 +12,11 @@
 package org.usfirst.frc3620.robot.commands;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
@@ -24,14 +27,13 @@ import org.usfirst.frc3620.robot.RobotMap;
 /**
  *
  */
-public class ButtonACommand extends Command {
+public class ButtonXCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
 	SpeedController mySpeedController = RobotMap.laserCannonSubsystemSpeedController2;
-	DigitalInput myDigitalInput = RobotMap.laserCannonSubsystemDigitalInput0;
-	AnalogInput myAnalogInput = RobotMap.laserCannonSubsystemAnalogInput0;
+	Timer timer = new Timer();
 	
-    public ButtonACommand() {
+    public ButtonXCommand() {
     	requires(Robot.laserCannonSubsystem);
     }
 
@@ -39,23 +41,23 @@ public class ButtonACommand extends Command {
     @Override
     protected void initialize() {
     	EventLogging.commandMessage(logger);
+    	timer.reset();
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	double v = myAnalogInput.getVoltage();
-    	mySpeedController.set(v/5);
+    	mySpeedController.set(-0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    	if(myDigitalInput.get()) {
-    		// we were true
-    		return false;
+    	if(timer.get()>3) {
+    		return true;
     	}
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
