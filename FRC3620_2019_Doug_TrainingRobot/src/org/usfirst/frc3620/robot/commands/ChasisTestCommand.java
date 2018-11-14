@@ -20,7 +20,7 @@ public class ChasisTestCommand extends Command {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveSubsystem);
-    }
+    } 
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -31,11 +31,32 @@ public class ChasisTestCommand extends Command {
     	double leftJoystick = Robot.oi.getLeftVerticalJoystick();
     	double rightJoystick = Robot.oi.getRightVerticalJoystick();
     	
-    	leftSpeedController1.set(leftJoystick/2);
-    	leftSpeedController2.set(leftJoystick/2);
-    	rightSpeedController1.set(rightJoystick/2);
-    	rightSpeedController2.set(rightJoystick/2);
+    	double x = Robot.oi.getRightHorizontalJoystick();
+    	double y = Robot.oi.getRightVerticalJoystick();
     	
+    	double L = -y+x;
+    	double R = -y-x;
+    	
+    	double max = Math.abs(L);
+    	if(max < Math.abs
+    			(R)) {
+    		max = Math.abs(R);
+    	}
+    	
+    	if (max > 1) {
+    		L /= max;
+    		R /= max;
+    	}
+    	
+    	leftSpeedController1.set(L);
+    	leftSpeedController2.set(L);
+    	rightSpeedController1.set(-R);
+    	rightSpeedController2.set(-R);
+    	
+//    	leftSpeedController1.set(-rightJoystick);
+//    	leftSpeedController2.set(-rightJoystick);
+//    	rightSpeedController1.set(leftJoystick);
+//    	rightSpeedController2.set(leftJoystick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
