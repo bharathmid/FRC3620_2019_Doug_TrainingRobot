@@ -80,6 +80,13 @@ public class EventLogging {
   	  logger.info("command {}", stackTraceElement[1].getMethodName());
     }
 
+    public static void commandMessage (org.slf4j.Logger logger, String label) {
+    	  Throwable t = new Throwable();
+    	  StackTraceElement[] stackTraceElement = t.getStackTrace();
+    	  logger.info("command {} {}", stackTraceElement[1].getMethodName(), label);
+      }
+
+      
     
     /**
      * Write a warning message to the DriverStation.
