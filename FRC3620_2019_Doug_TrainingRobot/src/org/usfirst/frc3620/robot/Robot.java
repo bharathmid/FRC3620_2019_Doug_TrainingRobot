@@ -98,7 +98,8 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
     	processRobotModeChange(RobotMode.AUTONOMOUS);
 		
-        autonomousCommand = chooser.getSelected();
+    	autonomousCommand = new AutonomousSillyCommand();
+        //autonomousCommand = chooser.getSelected();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
