@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
@@ -46,7 +47,9 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	myDrive.arcadeDrive(driveStick.getY(), driveStick.getX());
+    	SmartDashboard.putNumber("joy X", driveStick.getX());
+    	SmartDashboard.putNumber("joy Y", driveStick.getY());
+    	myDrive.arcadeDrive(-driveStick.getY(), driveStick.getX());
     }
 
     // Make this return true when this Command no longer needs to run execute()
