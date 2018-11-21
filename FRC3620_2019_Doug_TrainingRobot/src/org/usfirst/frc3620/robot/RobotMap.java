@@ -89,10 +89,12 @@ public class RobotMap {
 
 		driveSubsystemRightVictor3 = new WPI_VictorSPX(3);
 		resetControllerToKnownState(driveSubsystemRightVictor3);
+		driveSubsystemRightVictor3.setInverted(true);
 		driveSubsystemRightVictor3.follow(driveSubsystemRightSpeedController);
 
 		driveSubsystemRightVictor7 = new WPI_VictorSPX(7);
 		resetControllerToKnownState(driveSubsystemRightVictor7);
+		driveSubsystemRightVictor7.setInverted(true);
 		driveSubsystemRightVictor7.follow(driveSubsystemRightSpeedController);
 
 
