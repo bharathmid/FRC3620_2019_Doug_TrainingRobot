@@ -107,8 +107,8 @@ public class RobotMap {
 		x.set(ControlMode.PercentOutput, 0);
 		x.configNominalOutputForward(0, 0);
 		x.configNominalOutputReverse(0, 0);
-		x.configPeakOutputForward(1, 0);
-		x.configPeakOutputReverse(-1, 0);
+		x.configPeakOutputForward(5/6, 0);
+		x.configPeakOutputReverse(-5/6, 0);
 		x.configNeutralDeadband(0.04, 0);
     }
 }
