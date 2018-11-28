@@ -27,7 +27,7 @@ public class ArcadeDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double vertical = Robot.oi.getLeftVerticalJoystickSquared();
+    	double vertical = Robot.oi.getRightVerticalJoystickSquared();
     	double horizontal = Robot.oi.getLeftHorizontalJoystickSquared();
     	differentialDrive.arcadeDrive(vertical, horizontal);
     }
