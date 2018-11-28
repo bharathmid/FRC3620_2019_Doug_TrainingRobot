@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -34,6 +35,8 @@ public class RobotMap {
     public static SpeedController driveSubsystemLeftSpeedController2;
     public static SpeedController driveSubsystemRightSpeedController1;
     public static SpeedController driveSubsystemRightSpeedController2;
+    public static SpeedControllerGroup leftControllerGroup;
+    public static SpeedControllerGroup rightControllerGroup;
     public static DifferentialDrive driveSubsystemDifferentialDrive;
     public static AnalogInput laserCannonSubsystemAnalogInput0;
     public static DigitalInput laserCannonSubsystemDigitalInput0;
@@ -52,6 +55,8 @@ public class RobotMap {
         LiveWindow.addActuator("DriveSubsystem", "Left Speed Controller", (Victor) driveSubsystemLeftSpeedController1);
         driveSubsystemLeftSpeedController1.setInverted(false);
         
+        leftControllerGroup = new SpeedControllerGroup(driveSubsystemLeftSpeedController1, driveSubsystemLeftSpeedController2);
+        
         driveSubsystemRightSpeedController1 = new Victor(2);
         LiveWindow.addActuator("DriveSubsystem", "Right Speed Controller", (Victor) driveSubsystemRightSpeedController1);
         driveSubsystemRightSpeedController1.setInverted(false);
@@ -60,7 +65,9 @@ public class RobotMap {
         LiveWindow.addActuator("DriveSubsystem", "Right Speed Controller", (Victor) driveSubsystemRightSpeedController1);
         driveSubsystemRightSpeedController1.setInverted(false);
         
-        driveSubsystemDifferentialDrive = new DifferentialDrive(driveSubsystemLeftSpeedController1, driveSubsystemRightSpeedController1);
+        rightControllerGroup = new SpeedControllerGroup(driveSubsystemRightSpeedController1, driveSubsystemRightSpeedController2);
+        
+        driveSubsystemDifferentialDrive = new DifferentialDrive(leftControllerGroup, rightControllerGroup);
         LiveWindow.addActuator("DriveSubsystem", "Differential Drive", driveSubsystemDifferentialDrive);
         driveSubsystemDifferentialDrive.setSafetyEnabled(true);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
