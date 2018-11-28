@@ -47,9 +47,12 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	double y = Robot.oi.getRightVerticalJoystick();
+    	double x = Robot.oi.getLeftHorizontalJoystick();
     	SmartDashboard.putNumber("joy X", driveStick.getX());
     	SmartDashboard.putNumber("joy Y", driveStick.getY());
-    	myDrive.arcadeDrive(-driveStick.getY(), driveStick.getX());
+    	//myDrive.arcadeDrive(-driveStick.getY(), driveStick.getX());\
+    	myDrive.arcadeDrive(-y, x);
     }
 
     // Make this return true when this Command no longer needs to run execute()
