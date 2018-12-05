@@ -45,7 +45,7 @@ public class ButtonACommand extends Command {
     @Override
     protected void execute() {
     	double v = myAnalogInput.getVoltage();
-    	mySpeedController.set(v/5);
+    	mySpeedController.set(v/-5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
