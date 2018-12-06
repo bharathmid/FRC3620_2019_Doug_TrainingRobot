@@ -10,7 +10,6 @@
 
 
 package org.usfirst.frc3620.robot.commands;
-import org.usfirst.frc3620.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
