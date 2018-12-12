@@ -81,7 +81,7 @@ public class OI {
 
 
         SmartDashboard.putData("ButtonACommand", new ButtonACommand());
-
+        SmartDashboard.putData("AutoDriveCommand", new AutoDriveCommand());
         // ********************************* no longer ok to add!!!
     }
 

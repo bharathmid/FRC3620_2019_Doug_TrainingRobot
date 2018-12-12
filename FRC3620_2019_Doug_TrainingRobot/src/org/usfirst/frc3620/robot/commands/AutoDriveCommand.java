@@ -24,43 +24,38 @@ import org.usfirst.frc3620.robot.RobotMap;
 /**
  *
  */
-public class ButtonACommand extends Command {
+public class AutoDriveCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-	SpeedController mySpeedController = RobotMap.laserCannonSubsystemSpeedController2;
-	DigitalInput myDigitalInput = RobotMap.laserCannonSubsystemDigitalInput0;
-	AnalogInput myAnalogInput = RobotMap.laserCannonSubsystemAnalogInput0;
-	
-    public ButtonACommand() {
-
+    public AutoDriveCommand() {
+    	requires(Robot.driveSubsystem);
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+    	setTimeout(3);
     	EventLogging.commandMessage(logger);
     }
 
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	double v = myAnalogInput.getVoltage();
-    	double power = v / -5;
-    	mySpeedController.set(power);
+    	RobotMap.driveSubsystemDifferentialDrive.arcadeDrive(0.5,0.0 );
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-    
-        return false;
+     return isTimedOut();
     }
 
     // Called once after isFinished returns true
     @Override
     protected void end() {
     	EventLogging.commandMessage(logger);
-    	mySpeedController.set(0);
+    	//mySpeedController.set(0);
     }
 
     // Called when another command which requires one or more of the same
@@ -68,6 +63,6 @@ public class ButtonACommand extends Command {
     @Override
     protected void interrupted() {
     	EventLogging.commandMessage(logger);
-    	mySpeedController.set(0);
+    	//mySpeedController.set(0);
     }
 }

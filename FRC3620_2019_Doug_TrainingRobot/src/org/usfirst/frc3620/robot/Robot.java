@@ -32,7 +32,7 @@ import org.usfirst.frc3620.robot.subsystems.*;
  * the project.
  */
 public class Robot extends TimedRobot {
-
+ //bad syntaxl
     Command autonomousCommand;
     SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -98,7 +98,8 @@ public class Robot extends TimedRobot {
     public void autonomousInit() {
     	processRobotModeChange(RobotMode.AUTONOMOUS);
 		
-        autonomousCommand = chooser.getSelected();
+        //autonomousCommand = chooser.getSelected();
+    	autonomousCommand = new AutoDriveCommand();
         // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
     }
