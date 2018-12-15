@@ -21,10 +21,10 @@ import org.usfirst.frc3620.robot.RobotMap;
 /**
  *
  */
-public class ButtonACommand extends Command {
+public class ButtonBCommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
 	
-    public ButtonACommand() {
+    public ButtonBCommand() {
     	requires(Robot.laserCannonSubsystem);
     }
 
@@ -37,7 +37,7 @@ public class ButtonACommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-    	RobotMap.laserCannonSubsystemSpeedController2.set(.25);
+    	RobotMap.laserCannonSubsystemSpeedController2.set(-0.25);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -51,7 +51,8 @@ public class RobotMap {
         driveSubsystemRightSpeedController.setInverted(false);
         driveSubsystemDifferentialDrive = new DifferentialDrive(driveSubsystemLeftSpeedController, driveSubsystemRightSpeedController);
         LiveWindow.addActuator("DriveSubsystem", "Differential Drive", driveSubsystemDifferentialDrive);
-        driveSubsystemDifferentialDrive.setSafetyEnabled(true);
+        // muzzle the watcfhdog
+        driveSubsystemDifferentialDrive.setSafetyEnabled(false);
         driveSubsystemDifferentialDrive.setExpiration(0.1);
         driveSubsystemDifferentialDrive.setMaxOutput(1.0);
 
@@ -64,6 +65,7 @@ public class RobotMap {
         laserCannonSubsystemSpeedController2 = new Victor(2);
         LiveWindow.addActuator("LaserCannonSubsystem", "Speed Controller 2", (Victor) laserCannonSubsystemSpeedController2);
         laserCannonSubsystemSpeedController2.setInverted(false);
+
         laserCannonSubsystemServo9 = new Servo(9);
         LiveWindow.addActuator("LaserCannonSubsystem", "Servo 9", laserCannonSubsystemServo9);
         

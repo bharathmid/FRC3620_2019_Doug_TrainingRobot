@@ -58,6 +58,7 @@ public class OI {
     
     // ********************************* ok to add here!!!!
     public JoystickButton joystickButtonA;
+    public JoystickButton joystickButtonB;
     // ********************************* no longer ok to add!!!
     
     public OI() {
@@ -76,7 +77,10 @@ public class OI {
         // ********************************* ok to add here!!!!
         
         joystickButtonA = new JoystickButton(joystick0, XBoxConstants.BUTTON_A);
-        joystickButtonA.whileHeld(new ButtonACommand());
+        joystickButtonB = new JoystickButton(joystick0, XBoxConstants.BUTTON_B);
+        //joystickButtonA.whileHeld(new ButtonACommand());
+        joystickButtonA.toggleWhenPressed(new ButtonACommand());
+        joystickButtonB.toggleWhenPressed(new ButtonBCommand());
 
         SmartDashboard.putData("ButtonACommand", new ButtonACommand());
 
