@@ -10,19 +10,21 @@
 
 
 package org.usfirst.frc3620.robot.commands;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.slf4j.Logger;
 import org.usfirst.frc3620.logger.EventLogging;
 import org.usfirst.frc3620.logger.EventLogging.Level;
 import org.usfirst.frc3620.robot.Robot;
+import org.usfirst.frc3620.robot.RobotMap;
 
 /**
  *
  */
 public class ButtonACommand extends Command {
 	Logger logger = EventLogging.getLogger(getClass(), Level.INFO);
-	
+	SpeedController spark = RobotMap.driveSubsystemLeftSpeedController1;
     public ButtonACommand() {
 
     }
@@ -36,6 +38,7 @@ public class ButtonACommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
+    	spark.set(.4);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -48,6 +51,7 @@ public class ButtonACommand extends Command {
     @Override
     protected void end() {
     	EventLogging.commandMessage(logger);
+    	spark.stopMotor();
     }
 
     // Called when another command which requires one or more of the same
@@ -55,5 +59,6 @@ public class ButtonACommand extends Command {
     @Override
     protected void interrupted() {
     	EventLogging.commandMessage(logger);
+    	spark.stopMotor();
     }
 }
